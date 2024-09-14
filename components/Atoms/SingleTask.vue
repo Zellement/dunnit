@@ -3,6 +3,7 @@
         <div class="task__aside">
             <button
                 class="task__aside-btn group"
+                aria-label="Toggle task completion"
                 @click.prevent="toggleCompleteTask"
             >
                 <Icon
