@@ -33,8 +33,15 @@
 <script setup lang="ts">
 const tasksStore = useTasksStore()
 
-const taskTitle: Ref<string> = ref('')
-const taskDescription: Ref<string> = ref('')
+const taskTitle = computed<string>({
+    get: () => tasksStore.formFields.title,
+    set: (value: string) => (tasksStore.formFields.title = value)
+})
+
+const taskDescription = computed<string>({
+    get: () => tasksStore.formFields.body,
+    set: (value: string) => (tasksStore.formFields.body = value)
+})
 
 const formIsValid: ComputedRef<boolean> = computed(() => {
     return taskTitle.value.length > 0 && taskDescription.value.length > 0

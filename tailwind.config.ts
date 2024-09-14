@@ -102,17 +102,17 @@ export default {
                 inherit: 'inherit',
                 // Generate shades from a base colour: https://www.tailwindshades.com/
                 mint: {
-                    50: '#FBFEFC',
-                    100: '#F8FDF9',
-                    200: '#EDF9F0',
-                    300: '#E2F5E7',
-                    400: '#CDEED5',
-                    500: '#B7E7C3',
-                    600: '#A5D0B0',
-                    700: '#6E8B75',
-                    800: '#526858',
-                    900: '#37453B',
-                    950: '#1B221D'
+                    '50': '#F7FFFE',
+                    '100': '#EBFCFA',
+                    '200': '#D2FAF5',
+                    '300': '#B5F5EC',
+                    '400': '#81F0DD',
+                    '500': '#4FE8CA',
+                    '600': '#41D1AF',
+                    '700': '#2BAD86',
+                    '800': '#1C8C63',
+                    '900': '#106944',
+                    '950': '#074225'
                 },
                 orange: {
                     '50': '#FFFCF5',

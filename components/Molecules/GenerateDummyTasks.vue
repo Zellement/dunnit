@@ -18,6 +18,12 @@ const hasAnyTasks: ComputedRef<boolean> = computed(
 const fetchDummyData = async () => {
     const { data } = await useFetch<Task[]>('/api/fetch-dummy-tasks')
     if (!data.value) return
-    tasksStore.setTasks(data.value)
+
+    const tasksWithResetIds = data.value.map((task) => {
+        task.id = tasksStore.taskIndex
+        tasksStore.taskIndex++
+        return task
+    })
+    tasksStore.setTasks(tasksWithResetIds)
 }
 </script>

@@ -4,13 +4,21 @@ interface State {
     tasks: Task[]
     taskIndex: number
     clearingCompletedTasks: boolean
+    formFields: {
+        title: string
+        body: string
+    }
 }
 
 export const useTasksStore = defineStore('tasks', {
     state: (): State => ({
         tasks: [],
         taskIndex: 0,
-        clearingCompletedTasks: false
+        clearingCompletedTasks: false,
+        formFields: {
+            title: '',
+            body: ''
+        }
     }),
     getters: {
         getTasksOutstanding(): Task[] {
@@ -42,6 +50,10 @@ export const useTasksStore = defineStore('tasks', {
             setTimeout(() => {
                 this.tasks = this.tasks.filter((task) => task.id !== id)
             }, 500)
+        },
+        editTask(task: Task) {
+            this.formFields.title = task.title
+            this.formFields.body = task.body ?? ''
         },
         toggleCompleteTask(id: number) {
             const task = this.tasks.find((task) => task.id === id)

@@ -16,7 +16,7 @@
             <span class="whitespace-pre-wrap text-xs">{{ task.body }}</span>
 
             <div class="task__functions">
-                <button aria-label="Edit task">
+                <button aria-label="Edit task" @click.prevent="editTask">
                     <Icon
                         name="heroicons-solid:pencil"
                         class="task__function-icons"
@@ -69,6 +69,10 @@ const deleteTask = async (): Promise<void> => {
 
 const toggleCompleteTask = (): void => {
     tasksStore.toggleCompleteTask(props.task.id)
+}
+
+const editTask = (): void => {
+    tasksStore.editTask(props.task)
 }
 </script>
 

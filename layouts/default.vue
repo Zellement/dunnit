@@ -13,7 +13,7 @@
             >
                 <slot />
             </main>
-            <site-footer class="col-span-full text-right" />
+            <site-footer class="col-span-full pt-16" />
         </div>
     </div>
 </template>
