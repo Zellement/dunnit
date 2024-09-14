@@ -1,6 +1,5 @@
 <template>
     <button
-        v-if="!hasAnyTasks"
         class="text-2xs underline underline-offset-2"
         @click.prevent="fetchDummyData"
     >
@@ -11,10 +10,6 @@
 <script lang="ts" setup>
 import { v4 as uuidv4 } from 'uuid'
 const tasksStore = useTasksStore()
-
-const hasAnyTasks: ComputedRef<boolean> = computed(
-    () => tasksStore.tasks.length > 0
-)
 
 const fetchDummyData = async () => {
     const { data } = await useFetch<Task[]>('/api/fetch-dummy-tasks')
