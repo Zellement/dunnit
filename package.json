@@ -52,7 +52,6 @@
         "pinia": "^2.2.2",
         "pinia-plugin-persistedstate": "^4.0.1",
         "stylelint-prettier": "^5.0.2",
-        "uuid": "^10.0.0",
-        "vue-dompurify-html": "^5.1.0"
+        "uuid": "^10.0.0"
     }
 }

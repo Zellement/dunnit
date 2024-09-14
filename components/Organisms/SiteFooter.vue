@@ -15,6 +15,9 @@
                 class="underline"
                 to="https://github.com/prazdevs/pinia-plugin-persistedstate"
                 >pinia-plugin-persistedstate</nuxt-link
+            >,
+            <nuxt-link class="underline" to="https://color-mode.nuxtjs.org/"
+                >@nuxtjs/color-mode</nuxt-link
             >
         </p>
     </footer>
