@@ -37,7 +37,7 @@
             class="flex items-center gap-1 rounded-xl bg-gradient-to-r from-red-500 to-red-600 p-2 text-2xs text-white dark:from-red-700 dark:to-red-800"
         >
             <Icon name="ri:error-warning-line" class="icons" />
-            Sorry, please complete both fields.
+            Sorry, please complete at least the title.
         </div>
     </form>
 </template>
