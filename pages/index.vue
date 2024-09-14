@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="page flex h-full w-full">
         <task-list />
     </div>
 </template>

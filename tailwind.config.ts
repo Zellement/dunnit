@@ -126,7 +126,8 @@ export default {
                     '800': '#99390F',
                     '900': '#732608',
                     '950': '#4A1504'
-                }
+                },
+                tangerine: '#F7B20F'
             },
             aspectRatio: {
                 landscape: '383 / 235',

@@ -3,12 +3,14 @@ import { defineStore } from 'pinia'
 interface State {
     tasks: Task[]
     taskIndex: number
+    clearingCompletedTasks: boolean
 }
 
 export const useTasksStore = defineStore('tasks', {
     state: (): State => ({
         tasks: [],
-        taskIndex: 0
+        taskIndex: 0,
+        clearingCompletedTasks: false
     }),
     getters: {
         getTasksOutstanding(): Task[] {
@@ -28,6 +30,13 @@ export const useTasksStore = defineStore('tasks', {
             }
             this.setTasks([taskObj])
             this.taskIndex++
+        },
+        clearCompletedTasks() {
+            this.clearingCompletedTasks = true
+            setTimeout(() => {
+                this.tasks = this.tasks.filter((task) => !task.completed)
+                this.clearingCompletedTasks = false
+            }, 500)
         },
         deleteTask(id: number) {
             setTimeout(() => {
