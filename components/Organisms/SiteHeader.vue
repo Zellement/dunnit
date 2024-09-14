@@ -6,25 +6,13 @@
             </div>
             <div class="flex w-full flex-row justify-center gap-2">
                 <button
-                    :class="darkModeIconClasses"
-                    class="flex transition-transform hover:-translate-y-0.5"
-                    aria-label="Use light mode"
-                    @click="toggleColorMode('light')"
+                    class="dark:text-butterscotch-500 z-10 lg:block"
+                    aria-label="Toggle light and dark modes"
+                    @click="toggleColourMode"
                 >
                     <Icon
                         name="material-symbols:sunny-rounded"
-                        class="m-auto h-4 w-4 lg:h-6 lg:w-6"
-                    />
-                </button>
-                <button
-                    class="flex transition-transform hover:-translate-y-0.5"
-                    :class="lightModeIconClasses"
-                    aria-label="Use dark mode"
-                    @click="toggleColorMode('dark')"
-                >
-                    <Icon
-                        name="material-symbols-light:nightlight"
-                        class="m-auto h-4 w-4 lg:h-6 lg:w-6"
+                        class="h-5 w-5"
                     />
                 </button>
             </div>
@@ -32,21 +20,14 @@
     </header>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 const colorMode = useColorMode()
 
-const toggleColorMode = (value) => {
-    colorMode.preference = value
+const toggleColourMode = (): void => {
+    if (colorMode.preference === 'system' || colorMode.preference === 'dark') {
+        colorMode.preference = 'light'
+    } else {
+        colorMode.preference = 'dark'
+    }
 }
-
-const isLightMode = computed(() => {
-    return colorMode.preference === 'light'
-})
-const lightModeIconClasses = computed(() => {
-    return isLightMode.value ? 'opacity-100' : 'opacity-50 '
-})
-
-const darkModeIconClasses = computed(() => {
-    return isLightMode.value ? 'opacity-50 ' : 'opacity-100'
-})
 </script>

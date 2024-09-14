@@ -5,6 +5,7 @@
                 <div class="sticky top-0">
                     <site-header />
                     <form-create-task />
+                    <generate-dummy-tasks />
                 </div>
             </div>
             <main class="col-span-full lg:col-span-8 lg:col-start-5">
