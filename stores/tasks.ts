@@ -14,17 +14,38 @@ export const useTasksStore = defineStore('tasks', {
         tasks: [],
         taskIndex: 0
     }),
+    getters: {
+        getTasksOutstanding(): Task[] {
+            return this.tasks.filter((task) => task.status != 'complete')
+        },
+        getTasksComplete(): Task[] {
+            return this.tasks.filter((task) => task.status === 'complete')
+        }
+    },
     actions: {
         createTask(task: Partial<Task>) {
             this.tasks.push({
                 id: this.taskIndex,
                 title: task.title ?? '',
-                body: task.body ?? ''
+                body: task.body ?? '',
+                status: 'todo'
             })
             this.taskIndex++
         },
         deleteTask(id: number) {
-            this.tasks = this.tasks.filter((task) => task.id !== id)
+            setTimeout(() => {
+                this.tasks = this.tasks.filter((task) => task.id !== id)
+            }, 1000)
+        },
+        toggleCompleteTask(id: number) {
+            const task = this.tasks.find((task) => task.id === id)
+            if (task) {
+                if (task.status === 'complete') {
+                    task.status = 'todo'
+                } else {
+                    task.status = 'complete'
+                }
+            }
         }
     },
     persist: true

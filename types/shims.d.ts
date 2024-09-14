@@ -16,10 +16,13 @@ declare global {
         [key: `utm_${string}`]: string
     }
 
+    type TaskStatus = 'todo' | 'complete'
+
     interface Task {
         title: string
         body: string
         id: number
+        status: TaskStatus
     }
 }
 
