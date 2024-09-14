@@ -4,7 +4,7 @@
             <div class="col-span-full h-full lg:col-span-4 lg:row-start-1">
                 <div class="sticky top-0">
                     <site-header />
-                    <form-create-task />
+                    <form-modify-task />
                     <generate-dummy-tasks class="mt-16" />
                 </div>
             </div>

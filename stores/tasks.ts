@@ -7,6 +7,7 @@ interface State {
     formFields: {
         title: string
         body: string
+        id: number | null
     }
 }
 
@@ -17,7 +18,8 @@ export const useTasksStore = defineStore('tasks', {
         clearingCompletedTasks: false,
         formFields: {
             title: '',
-            body: ''
+            body: '',
+            id: null
         }
     }),
     getters: {
@@ -39,6 +41,10 @@ export const useTasksStore = defineStore('tasks', {
             this.setTasks([taskObj])
             this.taskIndex++
         },
+        updateTask(task: Task) {
+            const getTask = this.tasks.filter((t) => t.id === task.id)[0]
+            this.tasks[getTask.id] = task
+        },
         clearCompletedTasks() {
             this.clearingCompletedTasks = true
             setTimeout(() => {
@@ -54,6 +60,7 @@ export const useTasksStore = defineStore('tasks', {
         editTask(task: Task) {
             this.formFields.title = task.title
             this.formFields.body = task.body ?? ''
+            this.formFields.id = task.id ?? ''
         },
         toggleCompleteTask(id: number) {
             const task = this.tasks.find((task) => task.id === id)
