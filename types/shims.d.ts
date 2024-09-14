@@ -15,6 +15,12 @@ declare global {
     interface UtmParameters {
         [key: `utm_${string}`]: string
     }
+
+    interface Task {
+        title: string
+        body: string
+        id: number
+    }
 }
 
 export {}

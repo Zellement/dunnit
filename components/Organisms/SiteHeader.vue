@@ -1,10 +1,10 @@
 <template>
     <header role="banner" class="">
-        <div class="container container-px flex flex-col">
+        <div class="flex flex-col">
             <div class="flex py-4">
                 <site-brand class="mx-auto h-full w-full max-w-40" />
             </div>
-            <div class="flex w-full flex-row items-center justify-center gap-2">
+            <div class="flex w-full flex-row justify-center gap-2">
                 <button
                     :class="darkModeIconClasses"
                     class="flex transition-transform hover:-translate-y-0.5"

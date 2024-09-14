@@ -34,12 +34,18 @@ export default {
     ],
     theme: {
         fontFamily: {
-            sans: ['Open-Sans', ...defaultTheme.fontFamily.sans]
+            sans: ['Open-Sans', ...defaultTheme.fontFamily.sans],
+            display: ['Titan-One', ...defaultTheme.fontFamily.sans]
         },
         fontSize: {
-            /* Step -1: 14.17px → 16.00px */
             xs: [
                 'clamp(0.89rem, calc(0.86rem + 0.14vw), 1.00rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            sm: [
+                'clamp(0.96rem, calc(1.00rem + 0.24vw), 1.16rem)',
                 {
                     lineHeight: 'calc(100% + 10px)'
                 }
@@ -104,7 +110,21 @@ export default {
                     600: '#A5D0B0',
                     700: '#6E8B75',
                     800: '#526858',
-                    900: '#37453B'
+                    900: '#37453B',
+                    950: '#1B221D'
+                },
+                orange: {
+                    '50': '#FFFCF5',
+                    '100': '#FFF8EB',
+                    '200': '#FFEAC9',
+                    '300': '#FFD9A8',
+                    '400': '#FFB169',
+                    '500': '#FE7A29',
+                    '600': '#E66820',
+                    '700': '#BF4F17',
+                    '800': '#99390F',
+                    '900': '#732608',
+                    '950': '#4A1504'
                 }
             },
             aspectRatio: {

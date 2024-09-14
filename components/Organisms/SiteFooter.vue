@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="w-full">
         <footer
             role="contentinfo"
             class="relative z-10 w-full transition-transform duration-500"
         >
-            <div class="container grid-layout container-px py-8">
+            <div class="">
                 <div
                     class="col-span-10 col-start-2 flex flex-col justify-between gap-8 lg:flex-row"
                 >

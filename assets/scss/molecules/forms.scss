@@ -1,0 +1,18 @@
+.form {
+  label {
+
+    @apply flex flex-col gap-1;
+    
+    span.title {
+      @apply uppercase text-xs font-display tracking-wider;
+    }
+  }
+
+  input, textarea {
+    @apply rounded-xl border-none bg-mint-50 dark:bg-mint-900 dark:text-white;
+  }
+
+  textarea {
+    @apply h-32;
+  }
+}
