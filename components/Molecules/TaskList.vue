@@ -1,5 +1,5 @@
 <template>
-    <div class="flex h-full w-full flex-col gap-8">
+    <div class="flex h-full w-full flex-col gap-8 py-4">
         <div
             v-if="hasZeroTasks"
             class="bg-tangerine m-auto max-w-64 animate-pulse overflow-clip rounded-full p-8"
@@ -10,7 +10,7 @@
                 class="m-auto overflow-clip rounded-2xl"
             />
         </div>
-        <template v-else>
+        <div v-else class="flex flex-col gap-16">
             <div
                 v-if="hasTasksOutstanding"
                 class="flex flex-col gap-4 transition-opacity"
@@ -42,7 +42,7 @@
                     </li>
                 </ul>
             </div>
-        </template>
+        </div>
     </div>
 </template>
 

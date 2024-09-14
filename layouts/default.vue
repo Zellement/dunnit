@@ -8,7 +8,9 @@
                     <generate-dummy-tasks class="mt-16" />
                 </div>
             </div>
-            <main class="col-span-full lg:col-span-8 lg:col-start-5">
+            <main
+                class="col-span-full mt-16 lg:col-span-8 lg:col-start-5 lg:m-0"
+            >
                 <slot />
             </main>
             <site-footer class="col-span-full text-right" />
