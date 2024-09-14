@@ -22,8 +22,9 @@
         </button>
         <div
             v-if="!formIsValid && showFormError"
-            class="rounded-xl bg-red-500 p-2 text-xs text-white dark:bg-red-700"
+            class="flex items-center gap-1 rounded-xl bg-gradient-to-r from-red-500 to-red-600 p-2 text-2xs text-white dark:from-red-700 dark:to-red-800"
         >
+            <Icon name="ri:error-warning-line" class="icons" />
             Sorry, please complete both fields.
         </div>
     </form>
@@ -46,6 +47,7 @@ const showFormError: Ref<boolean> = ref(false)
 const resetFields: () => void = () => {
     taskTitle.value = ''
     taskDescription.value = ''
+    showFormError.value = false
 }
 
 const createTask = (): void => {

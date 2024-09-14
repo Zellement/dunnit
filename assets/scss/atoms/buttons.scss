@@ -1,9 +1,9 @@
 @layer utilities {
     .btn {
-        @apply relative border text-xs font-display border-current px-3 py-1   uppercase tracking-wider rounded-xl;
+        @apply relative border text-xs font-display border-current px-3 py-1 rounded-xl;
 
         &:hover {
-            @apply bg-mint-500 text-mint-800 transition-colors;
+            @apply bg-orange-500 dark:bg-orange-700 transition-colors;
         }
     }
 }

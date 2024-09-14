@@ -38,6 +38,7 @@ export default {
             display: ['Titan-One', ...defaultTheme.fontFamily.sans]
         },
         fontSize: {
+            '2xs': ['12px'],
             xs: [
                 'clamp(0.89rem, calc(0.86rem + 0.14vw), 1.00rem)',
                 {

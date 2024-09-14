@@ -22,6 +22,9 @@ export const useTasksStore = defineStore('tasks', {
                 body: task.body ?? ''
             })
             this.taskIndex++
+        },
+        deleteTask(id: number) {
+            this.tasks = this.tasks.filter((task) => task.id !== id)
         }
     },
     persist: true

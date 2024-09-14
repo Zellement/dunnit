@@ -15,8 +15,8 @@
         <span
             class="relative flex min-h-10 flex-grow flex-col gap-2 rounded-xl bg-mint-50 px-3 py-2 dark:bg-mint-900"
         >
-            <span class="">{{ task.title }}</span>
-            <span class="">{{ task.body }}</span>
+            <span class="font-display">{{ task.title }}</span>
+            <span class="whitespace-pre-wrap text-xs">{{ task.body }}</span>
 
             <div
                 class="absolute right-3 top-0 flex -translate-y-1.5 gap-1 rounded-xl bg-mint-100 px-2 shadow dark:bg-mint-950"
@@ -24,7 +24,7 @@
                 <button aria-label="Edit task">
                     <Icon name="heroicons-solid:pencil" class="icons" />
                 </button>
-                <button aria-label="Delete task">
+                <button aria-label="Delete task" @click.prevent="deleteTask">
                     <Icon name="weui:delete-on-filled" class="icons" />
                 </button>
             </div>
@@ -37,7 +37,12 @@ interface Props {
     task: Task
 }
 
-defineProps<Props>()
+const tasksStore = useTasksStore()
+const props = defineProps<Props>()
+
+const deleteTask = (): void => {
+    tasksStore.deleteTask(props.task.id)
+}
 </script>
 
 <style lang="scss" scoped>

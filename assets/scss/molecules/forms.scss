@@ -4,7 +4,7 @@
     @apply flex flex-col gap-1;
     
     span.title {
-      @apply uppercase text-xs font-display tracking-wider;
+      @apply text-xs font-display;
     }
   }
 
