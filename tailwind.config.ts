@@ -92,8 +92,20 @@ export default {
             colors: {
                 transparent: 'transparent',
                 current: 'currentColor',
-                inherit: 'inherit'
+                inherit: 'inherit',
                 // Generate shades from a base colour: https://www.tailwindshades.com/
+                mint: {
+                    50: '#FBFEFC',
+                    100: '#F8FDF9',
+                    200: '#EDF9F0',
+                    300: '#E2F5E7',
+                    400: '#CDEED5',
+                    500: '#B7E7C3',
+                    600: '#A5D0B0',
+                    700: '#6E8B75',
+                    800: '#526858',
+                    900: '#37453B'
+                }
             },
             aspectRatio: {
                 landscape: '383 / 235',

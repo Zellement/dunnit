@@ -20,8 +20,15 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxtjs/svg-sprite',
         'nuxt-viewport',
-        '@nuxt/fonts'
+        '@nuxt/fonts',
+        '@nuxtjs/color-mode',
+        'nuxt-icon'
     ],
+
+    colorMode: {
+        classSuffix: '',
+        preference: 'dark'
+    },
 
     svgSprite: {
         input: '~/assets/icons/svg',

@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="transiton-opacity site-footer mt-32 flex bg-white/20 text-current backdrop-blur-lg duration-1000 hover:opacity-100 dark:bg-black/20"
-    >
+    <div>
         <footer
             role="contentinfo"
             class="relative z-10 w-full transition-transform duration-500"
@@ -11,9 +9,9 @@
                     class="col-span-10 col-start-2 flex flex-col justify-between gap-8 lg:flex-row"
                 >
                     <div class="flex flex-row items-center gap-4">
-                        <site-brand />
                         <p class="flex flex-row gap-1 text-xs">
-                            <span>&copy;</span> <span>{{ date }}</span>
+                            <span>&copy;</span>
+                            <span>{{ date }} Zellement</span>
                         </p>
                     </div>
                 </div>
