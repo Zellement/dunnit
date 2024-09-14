@@ -9,6 +9,7 @@
 </template>
 
 <script lang="ts" setup>
+import { v4 as uuidv4 } from 'uuid'
 const tasksStore = useTasksStore()
 
 const hasAnyTasks: ComputedRef<boolean> = computed(
@@ -20,8 +21,7 @@ const fetchDummyData = async () => {
     if (!data.value) return
 
     const tasksWithResetIds = data.value.map((task) => {
-        task.id = tasksStore.taskIndex
-        tasksStore.taskIndex++
+        task.id = uuidv4()
         return task
     })
     tasksStore.setTasks(tasksWithResetIds)

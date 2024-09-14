@@ -19,7 +19,7 @@ declare global {
     interface Task {
         title: string
         body?: string
-        id: number
+        id: string
         completed: boolean
     }
 }

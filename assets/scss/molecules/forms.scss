@@ -12,7 +12,7 @@
     @apply rounded-xl bg-mint-50 dark:bg-mint-900 dark:text-white p-2 text-xs;
 
     &::placeholder {
-      @apply dark:text-mint-50;
+      @apply dark:text-mint-50 opacity-50;
     }
   }
 

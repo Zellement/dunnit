@@ -2,7 +2,7 @@
     <div class="flex h-full w-full flex-col gap-8 py-4">
         <div
             v-if="hasZeroTasks"
-            class="bg-tangerine m-auto max-w-64 animate-pulse overflow-clip rounded-full p-8"
+            class="m-auto max-w-64 animate-pulse overflow-clip rounded-full bg-tangerine p-8"
         >
             <nuxt-picture
                 src="/img/no-tasks.webp"

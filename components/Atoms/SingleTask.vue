@@ -1,5 +1,5 @@
 <template>
-    <div class="task" :class="[taskClassesCompleted, taskClassesDeleting]">
+    <div class="task" :class="taskClasses">
         <div class="task__aside">
             <button
                 class="task__aside-btn group"
@@ -46,6 +46,15 @@ const props = defineProps<Props>()
 const isDeletingTask: Ref<boolean> = ref(false)
 
 // Computeds
+
+const taskClasses: ComputedRef<string[]> = computed(() => {
+    return [
+        taskClassesCompleted.value,
+        taskClassesDeleting.value,
+        taskClassesIsEditing.value
+    ]
+})
+
 const taskIsComplete: ComputedRef<boolean> = computed(
     () => props.task.completed
 )
@@ -60,6 +69,14 @@ const taskClassesDeleting: ComputedRef<string> = computed(() => {
         : ''
 })
 
+const taskIsEditing: ComputedRef<boolean> = computed(
+    () => tasksStore.formFields.id === props.task.id
+)
+
+const taskClassesIsEditing: ComputedRef<string> = computed(() =>
+    taskIsEditing.value ? 'task--is-editing' : ''
+)
+
 // Methods
 
 const deleteTask = async (): Promise<void> => {
@@ -72,13 +89,13 @@ const toggleCompleteTask = (): void => {
 }
 
 const editTask = (): void => {
-    tasksStore.editTask(props.task)
+    tasksStore.editTask(props.task as Task)
 }
 </script>
 
 <style lang="scss" scoped>
 .task {
-    @apply flex w-full flex-row items-start;
+    @apply flex w-full flex-row items-start transition-colors;
 
     &__aside {
         @apply flex items-center after:flex after:h-px after:w-4 after:bg-mint-50 after:content-[''] dark:after:bg-mint-900;
@@ -115,6 +132,27 @@ const editTask = (): void => {
     }
     .task__functions {
         @apply bg-green-600 dark:bg-green-800;
+    }
+    .task__function-icons {
+        @apply hover:text-orange-500 dark:hover:text-orange-400;
+    }
+}
+
+.task--is-editing {
+    .task__aside {
+        @apply after:bg-mint-400 dark:after:bg-mint-900;
+    }
+    .task__aside-btn {
+        @apply bg-mint-300 dark:bg-mint-950;
+    }
+    .task__aside-btn-icon {
+        @apply text-white opacity-100;
+    }
+    .task__body {
+        @apply bg-mint-300 text-mint-900 dark:bg-mint-950 dark:text-mint-50;
+    }
+    .task__functions {
+        @apply bg-mint-600 dark:bg-black;
     }
     .task__function-icons {
         @apply hover:text-orange-500 dark:hover:text-orange-400;

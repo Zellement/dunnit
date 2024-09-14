@@ -45,9 +45,9 @@
 <script setup lang="ts">
 const tasksStore = useTasksStore()
 
-const taskId = computed<number | null>({
+const taskId = computed<string | null>({
     get: () => tasksStore.formFields.id,
-    set: (value: number | null) => (tasksStore.formFields.id = value)
+    set: (value: string | null) => (tasksStore.formFields.id = value)
 })
 
 const taskTitle = computed<string>({
@@ -92,7 +92,7 @@ const createTask = (): void => {
         title: taskTitle.value,
         body: taskDescription.value
     })
-    resetFields()
+    tasksStore.resetFormFields()
 }
 
 const updateTask = (): void => {
@@ -107,6 +107,6 @@ const updateTask = (): void => {
         id: taskId.value,
         completed: false
     })
-    resetFields()
+    tasksStore.resetFormFields()
 }
 </script>
