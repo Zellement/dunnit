@@ -149,6 +149,9 @@ const editTask = (): void => {
     .task__aside-btn-icon {
         @apply text-white opacity-100;
     }
+    &.task--is-complete .task__aside-btn {
+        @apply bg-green-500;
+    }
     .task__body {
         @apply bg-mint-300 text-mint-900 dark:bg-mint-950 dark:text-mint-50;
     }

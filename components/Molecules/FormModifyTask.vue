@@ -60,6 +60,11 @@ const taskDescription = computed<string>({
     set: (value: string) => (tasksStore.formFields.body = value)
 })
 
+const taskCompleted = computed<boolean>({
+    get: () => tasksStore.formFields.completed,
+    set: (value: boolean) => (tasksStore.formFields.completed = value)
+})
+
 const formIsValid: ComputedRef<boolean> = computed(() => {
     return taskTitle.value.length > 0
 })
@@ -105,7 +110,7 @@ const updateTask = (): void => {
         title: taskTitle.value,
         body: taskDescription.value,
         id: taskId.value,
-        completed: false
+        completed: taskCompleted.value
     })
     tasksStore.resetFormFields()
 }

@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 interface State {
     tasks: Task[]
-    taskIndex: number
     clearingCompletedTasks: boolean
     formFields: {
         title: string
@@ -16,7 +15,6 @@ interface State {
 export const useTasksStore = defineStore('tasks', {
     state: (): State => ({
         tasks: [],
-        taskIndex: 0,
         clearingCompletedTasks: false,
         formFields: {
             title: '',
