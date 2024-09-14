@@ -15,14 +15,18 @@
             <span class="font-display">{{ task.title }}</span>
             <span class="whitespace-pre-wrap text-xs">{{ task.body }}</span>
 
-            <div
-                class="absolute right-3 top-0 flex -translate-y-1.5 gap-1 rounded-xl bg-mint-100 px-2 shadow dark:bg-mint-950"
-            >
+            <div class="task__functions">
                 <button aria-label="Edit task">
-                    <Icon name="heroicons-solid:pencil" class="icons" />
+                    <Icon
+                        name="heroicons-solid:pencil"
+                        class="task__function-icons"
+                    />
                 </button>
                 <button aria-label="Delete task" @click.prevent="deleteTask">
-                    <Icon name="weui:delete-on-filled" class="icons" />
+                    <Icon
+                        name="weui:delete-on-filled"
+                        class="task__function-icons"
+                    />
                 </button>
             </div>
         </span>
@@ -30,14 +34,33 @@
 </template>
 
 <script lang="ts" setup>
+// TS
 interface Props {
     task: Task
 }
 
+// Stores, props, consts, state/ref
 const tasksStore = useTasksStore()
 const props = defineProps<Props>()
 
 const isDeletingTask: Ref<boolean> = ref(false)
+
+// Computeds
+const taskIsComplete: ComputedRef<boolean> = computed(
+    () => props.task.completed
+)
+
+const taskClassesCompleted: ComputedRef<string> = computed(() => {
+    return taskIsComplete.value ? 'task--is-complete' : ''
+})
+
+const taskClassesDeleting: ComputedRef<string> = computed(() => {
+    return isDeletingTask.value
+        ? 'opacity-0 pointer-events-none transition-opacity'
+        : ''
+})
+
+// Methods
 
 const deleteTask = async (): Promise<void> => {
     isDeletingTask.value = true
@@ -47,17 +70,6 @@ const deleteTask = async (): Promise<void> => {
 const toggleCompleteTask = (): void => {
     tasksStore.toggleCompleteTask(props.task.id)
 }
-
-const taskIsComplete: ComputedRef<boolean> = computed(
-    () => props.task.status === 'complete'
-)
-
-const taskClassesCompleted: ComputedRef<string> = computed(() => {
-    return taskIsComplete.value ? 'task--is-complete' : ''
-})
-const taskClassesDeleting: ComputedRef<string> = computed(() => {
-    return isDeletingTask.value ? 'opacity-0 transition-opacity' : ''
-})
 </script>
 
 <style lang="scss" scoped>
@@ -71,10 +83,16 @@ const taskClassesDeleting: ComputedRef<string> = computed(() => {
         @apply flex h-10 w-10 flex-shrink-0 rounded-full bg-mint-50 hover:scale-105 hover:shadow hover:transition-all dark:bg-mint-900;
     }
     &__aside-btn-icon {
-        @apply m-auto h-5 w-5 opacity-20 transition-opacity;
+        @apply m-auto h-5 w-5 opacity-20 hover:transition-opacity;
     }
     &__body {
-        @apply relative flex min-h-10 flex-grow flex-col gap-2 rounded-xl bg-mint-50 px-3 py-2 transition-colors dark:bg-mint-900;
+        @apply relative flex min-h-10 flex-grow flex-col gap-2 rounded-xl bg-mint-50 px-3 py-2 hover:transition-colors dark:bg-mint-900;
+    }
+    &__functions {
+        @apply absolute right-3 top-0 flex -translate-y-1.5 gap-1 rounded-xl bg-mint-100 px-2 shadow dark:bg-mint-950;
+    }
+    &__function-icons {
+        @apply h-4 w-4 transition-colors hover:text-orange-500 dark:hover:text-orange-400;
     }
 }
 
@@ -91,8 +109,11 @@ const taskClassesDeleting: ComputedRef<string> = computed(() => {
     .task__body {
         @apply bg-green-500 text-white dark:bg-green-700;
     }
-}
-.icons {
-    @apply h-4 w-4 transition-colors hover:text-orange-500 dark:hover:text-orange-400;
+    .task__functions {
+        @apply bg-green-600 dark:bg-green-800;
+    }
+    .task__function-icons {
+        @apply hover:text-orange-500 dark:hover:text-orange-400;
+    }
 }
 </style>

@@ -1,9 +1,5 @@
 import { defineStore } from 'pinia'
 
-// type BooleanKeys<T> = {
-//     [K in keyof T]: T[K] extends boolean ? K : never
-// }[keyof T]
-
 interface State {
     tasks: Task[]
     taskIndex: number
@@ -16,36 +12,34 @@ export const useTasksStore = defineStore('tasks', {
     }),
     getters: {
         getTasksOutstanding(): Task[] {
-            return this.tasks.filter((task) => task.status != 'complete')
+            return this.tasks.filter((task) => !task.completed)
         },
         getTasksComplete(): Task[] {
-            return this.tasks.filter((task) => task.status === 'complete')
+            return this.tasks.filter((task) => task.completed)
         }
     },
     actions: {
         createTask(task: Partial<Task>) {
-            this.tasks.push({
+            const taskObj: Task = {
                 id: this.taskIndex,
                 title: task.title ?? '',
                 body: task.body ?? '',
-                status: 'todo'
-            })
+                completed: false
+            }
+            this.setTasks([taskObj])
             this.taskIndex++
         },
         deleteTask(id: number) {
             setTimeout(() => {
                 this.tasks = this.tasks.filter((task) => task.id !== id)
-            }, 1000)
+            }, 500)
         },
         toggleCompleteTask(id: number) {
             const task = this.tasks.find((task) => task.id === id)
-            if (task) {
-                if (task.status === 'complete') {
-                    task.status = 'todo'
-                } else {
-                    task.status = 'complete'
-                }
-            }
+            if (task) task.completed = !task.completed
+        },
+        setTasks(tasks: Task[]) {
+            this.tasks = [...this.tasks, ...tasks]
         }
     },
     persist: true
