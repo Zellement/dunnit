@@ -4,7 +4,7 @@
             class="flex items-center after:flex after:h-px after:w-4 after:bg-mint-50 after:content-[''] dark:after:bg-mint-900"
         >
             <button
-                class="group flex h-10 w-10 flex-shrink-0 rounded-full bg-mint-50 transition-all hover:scale-105 hover:shadow dark:bg-mint-900"
+                class="group flex h-10 w-10 flex-shrink-0 rounded-full bg-mint-50 hover:scale-105 hover:shadow hover:transition-all dark:bg-mint-900"
             >
                 <Icon
                     name="mingcute:check-2-fill"

@@ -9,7 +9,7 @@
   }
 
   input, textarea {
-    @apply rounded-xl border-none bg-mint-50 dark:bg-mint-900 dark:text-white;
+    @apply rounded-xl bg-mint-50 dark:bg-mint-900 dark:text-white p-2 text-xs;
   }
 
   textarea {

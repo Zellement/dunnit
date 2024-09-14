@@ -1,6 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import eslintVitePlugin from 'vite-plugin-eslint'
-import { fileURLToPath } from 'url'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -22,7 +21,8 @@ export default defineNuxtConfig({
         'nuxt-viewport',
         '@nuxt/fonts',
         '@nuxtjs/color-mode',
-        'nuxt-icon'
+        'nuxt-icon',
+        'pinia-plugin-persistedstate/nuxt'
     ],
 
     colorMode: {
@@ -92,7 +92,7 @@ export default defineNuxtConfig({
                 {
                     rel: 'icon',
                     type: 'image/x-icon',
-                    href: '/favicon.png'
+                    href: '/img/dunnit-logo.png'
                 }
             ]
         },

@@ -23,5 +23,6 @@ export const useTasksStore = defineStore('tasks', {
             })
             this.taskIndex++
         }
-    }
+    },
+    persist: true
 })

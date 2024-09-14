@@ -1,34 +1,62 @@
 <template>
     <form class="form flex w-full flex-col gap-5">
         <label>
-            <span class="title">Title</span>
+            <span class="title">Title *</span>
             <input
                 v-model="taskTitle"
                 type="text"
                 name="title"
-                placeholder="Title"
+                placeholder="I need to..."
             />
         </label>
         <label>
-            <span class="title">Description</span>
-            <textarea v-model="taskDescription" name="description"></textarea>
+            <span class="title">Description *</span>
+            <textarea
+                v-model="taskDescription"
+                placeholder="...and this is some extra info."
+                name="description"
+            ></textarea>
         </label>
         <button type="submit" class="btn" @click.prevent="createTask()">
             Create task
         </button>
+        <div
+            v-if="!formIsValid && showFormError"
+            class="rounded-xl bg-red-500 p-2 text-xs text-white dark:bg-red-700"
+        >
+            Sorry, please complete both fields.
+        </div>
     </form>
 </template>
 
 <script setup lang="ts">
 const tasksStore = useTasksStore()
 
+const taskTitle: Ref<string> = ref('')
+const taskDescription: Ref<string> = ref('')
+
+const formIsValid: ComputedRef<boolean> = computed(() => {
+    return taskTitle.value.length > 0 && taskDescription.value.length > 0
+})
+
+const showFormError: Ref<boolean> = ref(false)
+
+// Methods
+
+const resetFields: () => void = () => {
+    taskTitle.value = ''
+    taskDescription.value = ''
+}
+
 const createTask = (): void => {
+    if (!formIsValid.value) {
+        showFormError.value = true
+        return
+    }
     tasksStore.createTask({
         title: taskTitle.value,
         body: taskDescription.value
     })
+    resetFields()
 }
-
-const taskTitle: Ref<string> = ref('')
-const taskDescription: Ref<string> = ref('')
 </script>
