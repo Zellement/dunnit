@@ -33,7 +33,7 @@
                         class="btn btn-primary"
                         @click="tasksStore.clearCompletedTasks"
                     >
-                        Clear Completed
+                        Clear completed
                     </button>
                 </div>
                 <ul class="flex flex-col gap-4">
