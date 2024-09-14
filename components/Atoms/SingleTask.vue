@@ -66,7 +66,7 @@ const taskClassesCompleted: ComputedRef<string> = computed(() => {
 
 const taskClassesDeleting: ComputedRef<string> = computed(() => {
     return isDeletingTask.value
-        ? 'opacity-0 pointer-events-none transition-opacity'
+        ? 'opacity-0 pointer-events-none -translate-y-1/2 transition-all scale-50'
         : ''
 })
 
@@ -96,7 +96,7 @@ const editTask = (): void => {
 
 <style lang="scss" scoped>
 .task {
-    @apply flex w-full flex-row items-start transition-colors;
+    @apply flex w-full flex-row items-start transition-all;
 
     &__aside {
         @apply flex items-center after:flex after:h-px after:w-4 after:bg-mint-50 after:content-[''] dark:after:bg-mint-900;

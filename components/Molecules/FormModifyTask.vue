@@ -97,6 +97,7 @@ const createTask = (): void => {
         title: taskTitle.value,
         body: taskDescription.value
     })
+    showFormError.value = false
     tasksStore.resetFormFields()
 }
 
@@ -112,6 +113,7 @@ const updateTask = (): void => {
         id: taskId.value,
         completed: taskCompleted.value
     })
+    showFormError.value = false
     tasksStore.resetFormFields()
 }
 </script>
